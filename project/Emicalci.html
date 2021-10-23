@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="./Emi.css">
+     
+    
+
+    </head>
+    <body>
+<div class="outerShell">
+
+    <H1>EMI Calculator for Homeloans</H1>
+    <form name="loan-form" onsubmit="return calculator()">
+    <div class='loanBlock'>
+     Loan Amount<br>
+     <input type=number id="amount" style="border-radius:5px"><br>
+    </div>
+     <div class='aprBlock'>
+     Annual Percent Rate<br>
+     <input type="number" name="apr" id="apr" style="border-radius:5px"><br>
+     </div>
+      <div class='tenureBlock'>
+     Tenure<br>
+     <input type=number name="tenure" id="tenure" style="border-radius:5px"><br>
+     <br>
+      </div>
+      <div id=buttonBlock>
+    <button style="border-radius:2px">Find Out</button>
+      </div>
+    </form>
+    <P id="EMICapt"></P>
+    <script src='Emi.js'> </script>
+  </div>
+  </body>
+  </html>
