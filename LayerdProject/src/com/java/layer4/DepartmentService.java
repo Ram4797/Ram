@@ -6,6 +6,10 @@ import com.java.layer2.Department;
 
 public interface DepartmentService {
 
-	void createDepartmentService(Department dobj);
+	void createDepartmentService(Department dobj)throws DepartmentExits;
 	List<Department> findAllDeptService();
+	void modifyDepartmentService(Department dobj) throws DepartmentNotFoundException;
+	
+	void removeDepartmentService(int dno)throws DepartmentNotFoundException;
+
 }

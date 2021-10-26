@@ -56,8 +56,29 @@ public class DepartmentDAOimpl implements DepartmentDAO {
 	@Override
 	public Department selectDepartment(int dno) {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("DepartmentDAOImpl : selecting department by deptno");
+		
+		
+		Department dept = null;
+		try {
+			
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("select * from dept where deptno="+dno);
+				if(rs.next() ) 
+				{
+					dept = new Department();
+					dept.setDepartmentNumber(rs.getInt(1));
+					dept.setDepartmentName(rs.getString(2));
+					dept.setDepatmentLocation(rs.getString(3));
+					
+				}
+		} 
+		catch (SQLException e)
+		{	e.printStackTrace(); }
+		return dept;
 	}
+
+	
 
 	@Override
 	public List<Department> selectDepartment() {
@@ -85,16 +106,50 @@ public class DepartmentDAOimpl implements DepartmentDAO {
 	}
 
 	@Override
-	public void updateDepartment(Department dobj) {
+	public void modifyDepartment(Department dobj) {
 		// TODO Auto-generated method stub
 		System.out.println("Departmentimpl :Updating Department");
 
+		try
+		{
+			PreparedStatement pst=conn.prepareStatement("update dept set dname=?,dloc=?,where dno=?");
+			
+			pst.setString(1, dobj.getDepartmentName());
+			pst.setString(2, dobj.getDepatmentLocation());
+			pst.setInt(3, dobj.getDepartmentNumber());
+			int rows=pst.executeUpdate();
+			System.out.println("row updated :rows");
+			pst.close();
+			conn.close();
+
 	}
+	catch(SQLException e)
+	
+	{
+		e.printStackTrace();
+	}}
 
 	@Override
-	public void deleteDepartment(int dno) {
+	public void removeDepartment(int dno) {
 		// TODO Auto-generated method stub
 		System.out.println("Departmentimpl :Deleting Department");
+
+		try
+		{
+			PreparedStatement pst=conn.prepareStatement("delete dept where dno=?");
+			pst.setInt(1, dno);
+			
+			int rows=pst.executeUpdate();
+			System.out.println("row deleted:rows");
+			pst.close();
+			conn.close();
+
+	}
+	catch(SQLException e)
+	
+	{
+		e.printStackTrace();
 	}
 
+}
 }

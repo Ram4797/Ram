@@ -11,7 +11,6 @@ public interface DepartmentDAO
 		Department selectDepartment(int dno);
 		List<Department>selectDepartment();
 		
-		void updateDepartment(Department dobj);
-		void deleteDepartment(int dno);
-	
+		void modifyDepartment(Department dobj);
+		void removeDepartment(int dno);
 }

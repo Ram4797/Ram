@@ -26,5 +26,30 @@ public class DepartmentServiceimpl implements DepartmentService {
 		// TODO Auto-generated method stub
 		return dept.selectDepartment();
 	}
+	
+	public void modifyDepartmentService(Department dobj) throws DepartmentNotFoundException
+	{ Department dummyDept=dept.selectDepartment(dobj.getDepartmentNumber());
+	     if(dummyDept==null) {
+	    	 DepartmentNotFoundException dnfe=new DepartmentNotFoundException("This Department is modify"+dobj.getDepartmentNumber());
+	    	 throw dnfe;
+	     }
+	     else
+		dept.modifyDepartment(dobj);
+		
+	}
+	
+	public void removeDepartmentService(int dno) throws DepartmentNotFoundException
+	
+	{
+		Department dummyDept=dept.selectDepartment(dno);
+		if(dummyDept==null)
+		{
+			DepartmentNotFoundException dnfe=new DepartmentNotFoundException("This dept no is removed"+dno);
+		}
+		dept.removeDepartment(dno);
+		
+	}
+	
+	
 
 }
